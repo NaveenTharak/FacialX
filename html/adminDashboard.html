@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/adminDashboard.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <h1 class="sidebar-title">Admin Dashboard</h1>
+        <nav class="menu">
+            <a href="#" class="menu-item">Dashboard</a>
+            <a href="#" class="menu-item">Student</a>
+            <a href="#" class="menu-item">Subject</a>
+            <a href="#" class="menu-item">Teacher</a>
+            <a href="#" class="menu-item">Logout</a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <header class="header">
+            <div>Date: 2022/02/21</div>
+            <div>Admin dashboard, Welcome, Admin</div>
+            <div class="tabs">
+                <button>First</button>
+                <button>Second</button>
+            </div>
+        </header>
+        <section class="data-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Section</th>
+                        <th>Attendance Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Person 1</td>
+                        <td>A</td>
+                        <td>3</td>
+                    </tr>
+                    <!-- More rows... -->
+                </tbody>
+            </table>
+            <div class="chart" id="attendanceChart">Attendance Chart Placeholder</div>
+        </section>
+        <section class="chart-section">
+            <div class="chart" id="performanceChart">Performance Chart Placeholder</div>
+        </section>
+    </main>
+
+    <script src="adminDashboard.js"></script>
+</body>
+</html>

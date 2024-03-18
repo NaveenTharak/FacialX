@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+.sidebar-title {
+    margin-bottom: 2rem;
+}
+
+.menu-item {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 1rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.data-section {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.data-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-section th,
+.data-section td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.chart-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chart {
+    padding: 1rem;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin-right: 1rem;
+    flex-basis: calc(33.333% - 1rem);
+}
+
+.chart:last-child {
+    margin-right: 0;
+}
+
+/* Add colors for demonstration purposes */
+#attendanceChart {
+    border: 5px solid red; /* Placeholder for an actual chart */
+}
+
+#performanceChart {
+    border: 5px solid blue; /* Placeholder for an actual chart */
+}

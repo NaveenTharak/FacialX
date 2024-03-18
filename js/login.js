@@ -6,24 +6,33 @@ document.addEventListener('DOMContentLoaded', function() {
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
         
-        if (validateEmail(email) && validatePassword(password)) {
-            console.log('Email: ' + email);
-            console.log('Password: ' + password);
-            
-            // Here you would normally handle the login logic.
-            alert('Login successful!');
+        // Determine the type of user and redirect accordingly
+        var userRole = getUserRole(email, password);
+        
+        if (userRole === 'teacher') {
+            // Redirect to the teacher's home page
+            window.location.href = 'homeTeacher.html';
+        } else if (userRole === 'admin') {
+            // Redirect to the admin dashboard
+            window.location.href = 'adminDashboard.html';
         } else {
+            // If credentials don't match, alert the user
             alert('Invalid email or password!');
         }
     });
 });
 
-function validateEmail(email) {
-    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-}
+function getUserRole(email, password) {
+    // Hardcoded user credentials for demonstration
+    const credentials = {
+        'teacher@gmail.com': { password: 'teacher123', role: 'teacher' },
+        'admin@gmail.com': { password: 'admin123', role: 'admin' }
+    };
 
-function validatePassword(password) {
-    // This is a basic check for demonstration; you might need a more robust validation
-    return password.length >= 5;
+    var lowerCaseEmail = email.toLowerCase();
+    if (credentials[lowerCaseEmail] && credentials[lowerCaseEmail].password === password) {
+        return credentials[lowerCaseEmail].role;
+    }
+    
+    return null;
 }
