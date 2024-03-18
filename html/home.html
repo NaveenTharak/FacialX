@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance List</title>
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+    <header class="header">
+        <div class="profile-circle"></div>
+        <nav class="nav-tabs">
+            <a href="#" class="tab">Home</a>
+            <a href="#" class="tab">Details</a>
+            <a href="#" class="tab">Student</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Attendance List</h1>
+        <div class="controls">
+            <select id="sectionSelect" class="section-select">
+                <option value="sectionA">Section A</option>
+                <option value="sectionB">Section B</option>
+                <option value="sectionC">Section C</option>
+            </select>
+            <button id="refreshButton" class="refresh-button">Refresh</button>
+        </div>
+        <div class="attendance-grid">
+            <!-- Dynamically filled with JavaScript -->
+        </div>
+    </main>
+
+    <script src="../js/home.js"></script>
+</body>
+</html>
