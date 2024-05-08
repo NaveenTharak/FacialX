@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Users</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Navigation bar styles */
+        .navbar {
+            background-color: #0b4c61;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar-brand {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #d9d9d9;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-item {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+        
+        
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .button2-container {
+            display: flex; /* Use flexbox layout */
+            justify-content: space-around; /* Align buttons evenly in the container */
+            width: 100%; /* Ensure the container spans the full width */
+        }
+
+        .button2 {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button2:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+<script>
+    function confirmDelete(username) {
+        if (confirm("Are you sure you want to delete user " + username + "?")) {
+            // If the user confirms, set the value of the hidden input field
+            document.getElementById('userToDelete').value = username;
+            // Then submit the form
+            document.getElementById('deleteForm').submit();
+        } else {
+            // If the user cancels, do nothing
+            return false;
+        }
+    }
+</script>
+
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" class="navbar-brand">List of Students</a>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="/main" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/addNewUser" class="nav-link">Add New Student</a></li>
+            <li class="nav-item"><a href="/listusers" class="nav-link">Student List</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>List of Users</h1>
+        <p>{{ datetoday2 }}</p>
+        <p>Total Registered Users: {{ totalreg }}</p>
+        <br>
+
+        <a href="/addNewUser"><button class="button2">Add New User</button></a>
+        
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(l) %}
+                <tr>
+                    <td>{{ i+1 }}</td>
+                    <td>{{ names[i] }}</td>
+                    <td>{{ rolls[i] }}</td>
+                    <td>
+                        <!-- Delete button or link for each user -->
+                        <form action="/deleteuser" method="GET">
+                            <input type="hidden" name="user" value="{{ userlist[i] }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                    
+                    <!-- <td> -->
+                        <!-- Delete button with confirmation popup -->
+                        <!-- <button onclick="confirmDelete('{{ userlist[i] }}')">Delete</button> -->
+                    <!-- </td> -->
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
