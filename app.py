@@ -327,10 +327,10 @@ def get_rfid_and_name():
     # Return RFID value and student name as JSON
     return jsonify(rfid=rfid_value, student_name=student_name)
 
-# Error handler for 404 Not Found errors
-@app.errorhandler(404)
-def page_not_found(error):
-    return render_template('404.html'), 404
+# # Error handler for 404 Not Found errors
+# @app.errorhandler(404)
+# def page_not_found(error):
+#     return render_template('404.html'), 404
 
 # Our main function which runs the Flask App
 if __name__ == '__main__':
