@@ -6,6 +6,7 @@ This user guide provides comprehensive instructions for installing, configuring,
 
 Before installation, ensure that the target system meets the following minimum specifications to ensure optimal performance and stability:
 
+
 •	Operating System: Windows 10 or higher, MacOS 10.14 Mojave or higher, or a modern Linux distribution such as Ubuntu 20.04 LTS.
 •	Processor: Intel Core i5 or higher, or equivalent AMD processor.
 •	Memory: 8 GB RAM minimum.
@@ -19,14 +20,17 @@ Before installation, ensure that the target system meets the following minimum s
 1.	Software Installation:
 
 Step 1: Install Python
+
 •	Download Python 3.8 or higher from the official Python website.
 •	Run the installer and ensure that Python is added to your system’s PATH.
 
 Step 2: Install PostgreSQL
+
 •	Download the latest version of PostgreSQL for your operating system.
 •	Follow the installation wizard, and remember to note the database credentials as they will be needed later.
 
 Step 3: Install Flask and Required Libraries
+
 •	Open a command terminal and install Flask using pip:
 
         pip install Flask
@@ -40,12 +44,14 @@ Step 3: Install Flask and Required Libraries
 2.	Database Setup:
 
 Step 1: Create Database
+
 •	Access the PostgreSQL command line tool and create a new database:
 
-
+        CREATE DATABASE facialx;
 
 
 Step 2: Configure the Application
+
 •	Modify the database connection settings in your application’s configuration file to match the credentials and database name you’ve set.
 
 3.	Deploy the Application:
@@ -53,7 +59,7 @@ Step 2: Configure the Application
 •	Navigate to the directory of your Flask application via the command terminal.
 •	Run the application:
 
-        CREATE DATABASE facialx;
+        python app.py
 
 •	Ensure the server starts without errors, indicating that all dependencies are correctly installed and configured.
 
