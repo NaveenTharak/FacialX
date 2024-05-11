@@ -1,6 +1,6 @@
 import cv2
 import os
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, flash
 from flask import jsonify
 from datetime import date
 from datetime import datetime
@@ -11,6 +11,7 @@ import joblib
 import serial
 import time
 import pandas as pd
+import csv
 
 # Define the serial port and baud rate
 SERIAL_PORT = 'COM4'
@@ -23,7 +24,7 @@ app = Flask(__name__)
 app.secret_key = '12345'
 
 # Dummy user data (replace with your actual user data)
-users = {'admin': 'admin123'}
+users = {'user': 'user123', 'admin': 'admin123'}
 
 nimgs = 10
 
@@ -107,6 +108,14 @@ def add_attendance(name):
         with open(f'Attendance/Attendance-{datetoday}.csv', 'a') as f:
             f.write(f'\n{username},{userid},{current_time}')
 
+def add_user_to_csv(file_path, user_id, first_name, last_name):
+    # Open the file in append mode
+    with open(file_path, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        
+        # Write the new user's data
+        writer.writerow([user_id, first_name, last_name])
+
 
 ## A function to get names and rol numbers of all users
 def getallusers():
@@ -189,12 +198,26 @@ def login_post():
     username = request.form.get('username')
     password = request.form.get('password')
 
+    # # Check if username and password are correct
+    # if username in users and users[username] == password:
+    #     # Successful login, redirect to a protected page
+    #     return redirect(url_for('main'))
+    # else:
+    #     # Invalid credentials, redirect back to login page
+    #     return redirect(url_for('login'))
+    
     # Check if username and password are correct
     if username in users and users[username] == password:
-        # Successful login, redirect to a protected page
-        return redirect(url_for('main'))
+        # Redirect to different pages based on the user role
+        if username == 'admin':
+            # Redirect admin to admin page
+            return redirect(url_for('listusers'))
+        else:
+            # Redirect other users to main page
+            return redirect(url_for('main'))
     else:
-        # Invalid credentials, redirect back to login page
+        # Invalid credentials, display flash message and redirect back to login page
+        flash('Invalid username or password. Please try again.', 'error')
         return redirect(url_for('login'))
 
 # Our main page
