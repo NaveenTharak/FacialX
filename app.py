@@ -12,6 +12,7 @@ import serial
 import time
 import pandas as pd
 import csv
+from sklearn.metrics import accuracy_score
 
 # Define the serial port and baud rate
 SERIAL_PORT = 'COM4'
@@ -184,6 +185,40 @@ def get_student_name(rfid_value):
             return row['Name']
     return None  # Return None if RFID value not found
 
+#testing the ML model's accuracy
+def load_test_data(test_dir):
+    test_faces = []
+    test_labels = []
+    # Loop through each folder named after the person
+    for person in os.listdir(test_dir):
+        person_folder = os.path.join(test_dir, person)
+        if os.path.isdir(person_folder):
+            for imgname in os.listdir(person_folder):
+                img_path = os.path.join(person_folder, imgname)
+                img = cv2.imread(img_path)
+                if img is not None:
+                    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                    resized_face = cv2.resize(gray, (50, 50))  # Ensure this matches your model's expected input
+                    test_faces.append(resized_face.ravel())
+                    test_labels.append(person)
+    return np.array(test_faces), test_labels
+
+def test_model():
+    # Path to your test dataset
+    test_data_path = 'static/faces'  # Adjust path if necessary
+    test_faces, test_labels = load_test_data(test_data_path)
+
+    # Load the trained model
+    model = joblib.load('static/face_recognition_model.pkl')
+
+    # Predict test data
+    predictions = model.predict(test_faces)
+
+    # Calculate accuracy
+    accuracy = accuracy_score(test_labels, predictions)
+    print(f'Model accuracy: {accuracy * 100:.2f}%')
+
+
 
 ################## ROUTING FUNCTIONS #########################
 
@@ -282,13 +317,14 @@ def start():
             identified_person = identify_face(face.reshape(1, -1))[0]
             add_attendance(identified_person)
             cv2.putText(frame, f'{identified_person}', (x+5, y-5),
-                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+            cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
         cv2.imshow('Attendance', frame)
         if cv2.waitKey(1) == 27:
             break
     cap.release()
     cv2.destroyAllWindows()
     names, rolls, times, l = extract_attendance()
+    #test_model()
     return render_template('home.html', names=names, rolls=rolls, times=times, l=l, totalreg=totalreg(), datetoday2=datetoday2)
 
 
