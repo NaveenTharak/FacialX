@@ -8,17 +8,11 @@ Before installation, ensure that the target system meets the following minimum s
 
 
 •	Operating System: Windows 10 or higher, MacOS 10.14 Mojave or higher, or a modern Linux distribution such as Ubuntu 20.04 LTS.
-
 •	Processor: Intel Core i5 or higher, or equivalent AMD processor.
-
 •	Memory: 8 GB RAM minimum.
-
 •	Hard Disk: 100 GB of free space.
-
 •	Camera: HD webcam with 720p resolution or better.
-
 •	Internet: Broadband internet connection for initial setup and updates.
-
 •	Software Dependencies: Python 3.8 or higher, PostgreSQL 12.0 or higher, latest version of Flask.
 
 
