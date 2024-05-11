@@ -8,12 +8,19 @@ Before installation, ensure that the target system meets the following minimum s
 
 
 •	Operating System: Windows 10 or higher, MacOS 10.14 Mojave or higher, or a modern Linux distribution such as Ubuntu 20.04 LTS.
+
 •	Processor: Intel Core i5 or higher, or equivalent AMD processor.
+
 •	Memory: 8 GB RAM minimum.
+
 •	Hard Disk: 100 GB of free space.
+
 •	Camera: HD webcam with 720p resolution or better.
+
 •	Internet: Broadband internet connection for initial setup and updates.
+
 •	Software Dependencies: Python 3.8 or higher, PostgreSQL 12.0 or higher, latest version of Flask.
+
 
 ## Installation Process
 
@@ -68,26 +75,31 @@ Step 2: Configure the Application
 ### For Administrators:
 
 Dashboard Access:
+
 •	Log in to the system using administrator credentials provided during the setup phase.
 •	The administrator dashboard provides a comprehensive overview of attendance data, system logs, and user management options.
 
 Adding Users:
+
 •	Navigate to the ‘Users’ section.
 •	Click on ‘Add New User’ and fill in the required details such as name, role, and credentials.
 •	Submit the form to register a new user in the system.
 
 Viewing Reports:
+
 •	Access the ‘Reports’ section to view detailed attendance reports.
 •	Use filters to refine report criteria by date, class, or individual user.
 
 ### For Teachers:
 
 Taking Attendance:
+
 •	Log into the system using teacher credentials.
 •	Select the class for which attendance needs to be recorded.
 •	The system automatically recognizes students’ faces and records attendance. Manual adjustments can be made if necessary.
 
 Reviewing Attendance Records:
+
 •	Navigate to the ‘Attendance Records’ section to review or modify attendance entries.
 •	Corrections can be submitted for approval to ensure accuracy and accountability.
 
