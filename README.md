@@ -13,7 +13,8 @@ Before installation, ensure that the target system meets the following minimum s
 •	Hard Disk: 100 GB of free space.
 •	Camera: HD webcam with 720p resolution or better.
 •	Internet: Broadband internet connection for initial setup and updates.
-•	Software Dependencies: Python 3.8 or higher, PostgreSQL 12.0 or higher, latest version of Flask.
+•	Software Dependencies: Python 3.8 or higher, PostgreSQL 12.0 or higher, latest version of Flask.'
+•       13.56MHz RFID Reader which supports COM(COM4) ports. Not for Human Interface Device(HID).
 
 
 ## Installation Process
