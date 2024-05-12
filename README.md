@@ -19,7 +19,7 @@ Before installation, ensure that the target system meets the following minimum s
 
 ## Installation Process
 
-1.	Software Installation:
+### 1. Software Installation:
 
 Step 1: Install Python
 
@@ -43,7 +43,7 @@ Step 3: Install Flask and Required Libraries
 
 
 
-2.	Database Setup:
+### 2. Database Setup:
 
 Step 1: Create Database
 
@@ -56,7 +56,7 @@ Step 2: Configure the Application
 
 •	Modify the database connection settings in your application’s configuration file to match the credentials and database name you’ve set.
 
-3.	Deploy the Application:
+### 3.Deploy the Application:
 
 •	Navigate to the directory of your Flask application via the command terminal.
 •	Run the application:
