@@ -249,7 +249,7 @@ def login_post():
             return redirect(url_for('listusers'))
         else:
             # Redirect other users to main page
-            return redirect(url_for('main'))
+            return redirect(url_for('main1'))
     else:
         # Invalid credentials, display flash message and redirect back to login page
         flash('Invalid username or password. Please try again.', 'error')
@@ -265,6 +265,11 @@ def login_post():
 def main():
     names, rolls, times, l = extract_attendance()
     return render_template('home.html', names=names, rolls=rolls, times=times, l=l, totalreg=totalreg(), datetoday2=datetoday2)
+
+@app.route('/main1')
+def main1():
+    names, rolls, times, l = extract_attendance()
+    return render_template('home1.html', names=names, rolls=rolls, times=times, l=l, totalreg=totalreg(), datetoday2=datetoday2)
 
 
 ## List users page
@@ -326,6 +331,37 @@ def start():
     names, rolls, times, l = extract_attendance()
     #test_model()
     return render_template('home.html', names=names, rolls=rolls, times=times, l=l, totalreg=totalreg(), datetoday2=datetoday2)
+
+
+#home1 page for users
+@app.route('/start1', methods=['GET'])
+def start1():
+    names, rolls, times, l = extract_attendance()
+
+    if 'face_recognition_model.pkl' not in os.listdir('static'):
+        return render_template('home1.html', names=names, rolls=rolls, times=times, l=l, totalreg=totalreg(), datetoday2=datetoday2, mess='There is no trained model in the static folder. Please add a new face to continue.')
+
+    ret = True
+    cap = cv2.VideoCapture(0)
+    while ret:
+        ret, frame = cap.read()
+        if len(extract_faces(frame)) > 0:
+            (x, y, w, h) = extract_faces(frame)[0]
+            cv2.rectangle(frame, (x, y), (x+w, y+h), (86, 32, 251), 1)
+            cv2.rectangle(frame, (x, y), (x+w, y-40), (86, 32, 251), -1)
+            face = cv2.resize(frame[y:y+h, x:x+w], (50, 50))
+            identified_person = identify_face(face.reshape(1, -1))[0]
+            add_attendance(identified_person)
+            cv2.putText(frame, f'{identified_person}', (x+5, y-5),
+            cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+        cv2.imshow('Attendance', frame)
+        if cv2.waitKey(1) == 27:
+            break
+    cap.release()
+    cv2.destroyAllWindows()
+    names, rolls, times, l = extract_attendance()
+    #test_model()
+    return render_template('home1.html', names=names, rolls=rolls, times=times, l=l, totalreg=totalreg(), datetoday2=datetoday2)
 
 
 # A function to add a new user.

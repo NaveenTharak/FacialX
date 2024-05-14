@@ -136,12 +136,12 @@
             <div class="form-group">
                 <label for="newuserid">User Id*</label>
                 
-                <input type="number" id="newuserid" name="newuserid" class="form-control" readonly>
+                <input type="number" id="newuserid" name="newuserid" class="form-control" >
             
             </div>
             <div class="form-group">
                 <label for="newusername">Enter User Name*</label>
-                <input type="text" id="newusername" name="newusername" class="form-control" readonly>
+                <input type="text" id="newusername" name="newusername" class="form-control" >
             </div>
             
             <button type="submit" class="btn btn-dark btn-add">Capture the Face</button>
@@ -161,10 +161,13 @@
                     let studentName = '';
                     switch (data.rfid) {
                         case '147135626':
-                            studentName = 'Naveen';
-                            break;
-                        case '17990158244':
                             studentName = 'Pasan';
+                            break;
+                        case '4514412248101128':
+                            studentName = 'Naveen';
+                            break;    
+                        case '100198228138':
+                            studentName = 'PlymouthID';
                             break;
                         // Add more cases as needed for other RFID values
                     }
@@ -192,13 +195,14 @@
             }, 3000); // 3 seconds
         }
 
+        
         }
     
         // Fetch RFID value initially when page is loaded
         fetchRFID();
     
         // Poll for RFID value every 1 second
-        setInterval(fetchRFID, 1000);
+        setInterval(fetchRFID, 10000);
     </script>
     
     
