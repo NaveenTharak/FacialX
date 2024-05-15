@@ -1,5 +1,7 @@
 # face-recognition-based-attendance-system  
 
+![Face Recognition Based Attendance System](FacialX_Poster_PPTX.png)
+
 This user guide provides comprehensive instructions for installing, configuring, and operating the FacialX system, a sophisticated face recognition-based attendance system designed for educational institutions. The guide is structured to assist both technical staff and end-users in understanding and utilizing the system effectively.
 
 ## System Requirements
