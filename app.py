@@ -405,6 +405,11 @@ def add():
 def add_new_user():
     return render_template('addNewUser.html', totalreg=totalreg())
 
+#funtion to logout
+@app.route('/logout')
+def logout():
+    return render_template('login.html')
+
 @app.route('/get_rfid')
 def get_rfid():
     rfid_value = read_rfid()  # Assuming read_rfid() function reads the RFID value
